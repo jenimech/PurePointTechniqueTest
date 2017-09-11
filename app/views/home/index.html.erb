@@ -1,0 +1,24 @@
+<div class="mt-5">
+
+  <%= form_tag(root_url, method: 'get') do %>
+    <div class="input-group">
+      <%= text_field_tag(:q, nil, {class: 'form-control' , placeholder: "Search for..."}) %>
+      <span class="input-group-btn">
+        <%= button_tag "Search", class: "btn btn-secondary" %>
+      </span>
+    </div>
+  <% end %>
+
+  <table class="table table-striped mt-5">
+    <tbody>
+      <% if @results and !@results.empty? %>
+        <% @results.each do |result| %>
+          <tr>
+            <td><%= link_to result["title"], result["href"] %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
